@@ -1,0 +1,18 @@
+Backend> dotnet new mvc
+Backend> dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+Backend> dotnet add package Microsoft.EntityFrameworkCore.Tools
+
+(>dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson)
+
+---------
+| Sqlite |
+---------
+sqlite>sqlite .open <-- Create DB in sqlite cmd
+
+Backend>dotnet ef migrations add CreateDatabase
+Backend>dotnet ef database update
+
+-----------
+| Angular |
+-----------
+root> ng new Fronend

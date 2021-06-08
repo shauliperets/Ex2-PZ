@@ -1,0 +1,46 @@
+
+<form [formGroup]="productForm">
+    <label for="creator">Creator Name</label>
+    <input type="text" formControlName="creator" name="creator" class="form-control">
+    <label for="date">Date</label>
+    <input type="text" formControlName="date" name="date" class="form-control" [readonly]="true">
+    <label for="comments">Comments</label>
+    <input type="text" formControlName="comments" name="comments" class="form-control">
+    <br/>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Num</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Sum</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><input type="text" name="inputNum" formControlName="inputNum" class="form-control" [readonly]="true"></th>
+            <td><input type="text" (change)="onChange()" name="inputPrice" formControlName="inputPrice" class="form-control"></td>
+            <td><input type="text" (change)="onChange()" name="inputQuantity" formControlName="inputQuantity" class="form-control"></td>
+            <td><input type="text" name="inputSum" formControlName="inputSum" class="form-control" [readonly]="true"></td>
+          </tr>
+          <tr *ngFor="let row of getRows()">
+            <th scope="row">{{row.num}}</th>
+            <td >{{row.price}}</td>
+            <td>{{row.quantity}}</td>
+            <td>{{ row.price * row.quantity}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-primary" (click)="addRow()">Add new line</button>
+      <br/><br/>
+      <button class="btn btn-primary" (click)="addProduct()">Submit</button>
+
+</form>
+<br/>
+
+<ul class="list-group">
+  <li class="list-group item"
+      *ngFor="let record of records">
+      Creator: {{ record.creator }}, Date: {{ record.date }}, Num: {{ record.num }}
+  </li>
+</ul>
